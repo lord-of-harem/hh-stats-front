@@ -9,20 +9,23 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
 import { PlayerListComponent } from './player/list.component';
+import {PlayerService} from './_services/player.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerComponent,
-    PlayerListComponent
+    PlayerListComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
-  providers: [],
+  providers: [
+    PlayerService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
