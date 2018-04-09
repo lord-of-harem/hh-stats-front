@@ -1,33 +1,17 @@
-<div *ngIf="player | async as p">
+<div *ngIf="player$ | async as p">
     <p>
-        Nom: {{p.player.username}} <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{p.player.country}}.png" width="16px" />
+        Nom: {{p.player.username}} <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{p.player.country}}.png" width="16px" /><br />
+        <select (change)="loadChart($event.target.value)">
+            <option value="victory_points">Mojo</option>
+            <option value="pvp_wins">Victoire PVP</option>
+            <option value="troll_wins">Victoire PVE</option>
+            <option value="soft_currency">Argent</option>
+            <option value="experience">Expérience</option>
+            <option value="girls_won">Filles</option>
+            <option value="stats_upgrade">Stats harem</option>
+            <option value="girls_affection">Affection</option>
+            <option value="harem_level">Niveau Harem</option>
+        </select>
     </p>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Niveau</th>
-            <th>Mojo</th>
-            <th>Combat PVP</th>
-            <th>Combat PVE</th>
-            <th>Argent</th>
-            <th>Expérience</th>
-            <th>Filles</th>
-            <th>Stats harem</th>
-            <th>Affection</th>
-            <th>Niveau Harem</th>
-        </tr>
-        <tr *ngFor="let h of p.history">
-            <td>{{h.date | date}}</td>
-            <td>{{h.lvl}}</td>
-            <td>{{h.victory_points_value | number}} ({{h.victory_points_rank | number}})</td>
-            <td>{{h.pvp_wins_value | number}} ({{h.pvp_wins_rank | number}})</td>
-            <td>{{h.troll_wins_value | number}} ({{h.troll_wins_rank | number}})</td>
-            <td>{{h.soft_currency_value | number}} ({{h.soft_currency_rank | number}})</td>
-            <td>{{h.experience_value | number}} ({{h.experience_rank | number}})</td>
-            <td>{{h.girls_won_value | number}} ({{h.girls_won_rank | number}})</td>
-            <td>{{h.stats_upgrade_value | number}} ({{h.stats_upgrade_rank | number}})</td>
-            <td>{{h.girls_affection_value | number}} ({{h.girls_affection_rank | number}})</td>
-            <td>{{h.harem_level_value | number}} ({{h.harem_level_rank | number}})</td>
-        </tr>
-    </table>
+    <google-chart [data]="chart"></google-chart>
 </div>

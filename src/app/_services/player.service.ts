@@ -13,7 +13,13 @@ export class PlayerService {
     fetchHistory(playerId: string): Observable<PlayerModel> {
         return this.http
             .get(`${host}/api/players/${playerId}`)
-            .map(res => res.json())
+            .map(res => {
+                const data: PlayerModel = res.json();
+
+                data.history.forEach(history => history.date = new Date(history.date));
+
+                return data;
+            })
         ;
     }
 }

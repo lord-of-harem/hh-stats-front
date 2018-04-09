@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import { ROUTES } from './app.routes';
 
@@ -22,6 +23,7 @@ import {PlayerService} from './_services/player.service';
     RouterModule.forRoot(ROUTES),
     FormsModule,
     HttpModule,
+    Ng2GoogleChartsModule,
   ],
   providers: [
     PlayerService,
