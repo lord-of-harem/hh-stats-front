@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PlayerService} from '../_services/player.service';
-import {PlayerModel} from '../_models/player';
+import {fields, PlayerModel} from '../_models/player';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -13,14 +13,17 @@ export class PlayerComponent implements OnInit {
     private player$: Observable<PlayerModel>;
     private player: PlayerModel;
     private chart;
+    private fields: Array<string>;
 
-    constructor(private route: ActivatedRoute, private playerService: PlayerService) { }
+    constructor(private route: ActivatedRoute, private playerService: PlayerService) {
+        this.fields = fields;
+    }
 
     ngOnInit() {
         this.player$ = this.playerService.fetchHistory(this.route.snapshot.paramMap.get('playerId'));
         this.player$.subscribe(player => {
             this.player = player;
-            this.loadChart('victory_points');
+            this.loadChart(this.fields[0]);
         });
     }
 
@@ -34,6 +37,7 @@ export class PlayerComponent implements OnInit {
             options: {
                 title: 'Historique du joueur',
                 pointSize: 10,
+                height: 400,
             },
         };
 

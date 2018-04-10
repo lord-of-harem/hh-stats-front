@@ -2,15 +2,7 @@
     <p>
         Nom: {{p.player.username}} <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{p.player.country}}.png" width="16px" /><br />
         <select (change)="loadChart($event.target.value)">
-            <option value="victory_points">Mojo</option>
-            <option value="pvp_wins">Victoire PVP</option>
-            <option value="troll_wins">Victoire PVE</option>
-            <option value="soft_currency">Argent</option>
-            <option value="experience">Expérience</option>
-            <option value="girls_won">Filles</option>
-            <option value="stats_upgrade">Stats harem</option>
-            <option value="girls_affection">Affection</option>
-            <option value="harem_level">Niveau Harem</option>
+            <option *ngFor="let field of fields" value="{{field}}">{{field}}</option>
         </select>
     </p>
     <google-chart [data]="chart"></google-chart>
