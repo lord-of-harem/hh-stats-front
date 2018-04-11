@@ -1,0 +1,8 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+nav a:first-child img {
+    height: 26px;
+    margin: 0 4px 3px 0;
+}

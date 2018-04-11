@@ -1,9 +1,16 @@
 <div *ngIf="player$ | async as p">
-    <p>
-        Nom: {{p.player.username}} <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{p.player.country}}.png" width="16px" /><br />
-        <select (change)="loadChart($event.target.value)">
-            <option *ngFor="let field of fields" value="{{field}}">{{field}}</option>
-        </select>
-    </p>
-    <google-chart [data]="chart"></google-chart>
+    <mat-card>{{p.player.username}} <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{p.player.country}}.png" width="16px" /></mat-card>
+
+    <mat-divider></mat-divider>
+
+    <mat-card>
+        <mat-form-field>
+            <mat-label>Type de classement</mat-label>
+            <mat-select (change)="loadChart()" [(value)]="chartType">
+                <mat-option *ngFor="let field of fields" [value]="field">{{field}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <google-chart [data]="chart"></google-chart>
+    </mat-card>
 </div>

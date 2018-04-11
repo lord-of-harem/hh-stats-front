@@ -1,11 +1,24 @@
-<h1>
-  {{title}}
-</h1>
+<mat-toolbar color="primary">
+    <nav>
+        <a routerLink="/" mat-button><img src="https://content.hentaiheroes.com/pictures/design/profile.svg" />Hentai Heroes</a>
+        <a routerLink="/players" mat-button>Joueurs</a>
+        <a routerLink="/girls" mat-button>Filles</a>
+    </nav>
 
-<nav><ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/players">Historique</a></li>
-</ul></nav>
+    <span class="spacer"></span>
+
+    <mat-form-field>
+    <input matInput type="search" />
+    </mat-form-field>
+
+    <button mat-icon-button><mat-icon>search</mat-icon></button>
+    <!--<mat-form-field>
+        <input matInput type="search" [formControl]="itemCtrl" />
+    </mat-form-field>-->
+    <mat-autocomplete #auto="matAutocomplete">
+
+    </mat-autocomplete>
+</mat-toolbar>
 
 <div>
     <router-outlet></router-outlet>

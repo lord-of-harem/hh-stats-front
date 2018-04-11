@@ -13,21 +13,23 @@ export class PlayerComponent implements OnInit {
     private player$: Observable<PlayerModel>;
     private player: PlayerModel;
     private chart;
+    private chartType;
     private fields: Array<string>;
 
     constructor(private route: ActivatedRoute, private playerService: PlayerService) {
         this.fields = fields;
+        this.chartType = this.fields[0];
     }
 
     ngOnInit() {
         this.player$ = this.playerService.fetchHistory(this.route.snapshot.paramMap.get('playerId'));
         this.player$.subscribe(player => {
             this.player = player;
-            this.loadChart(this.fields[0]);
+            this.loadChart();
         });
     }
 
-    private loadChart(type) {
+    private loadChart() {
         this.chart = {
             chartType: 'LineChart',
             dataTable: [[
@@ -45,7 +47,7 @@ export class PlayerComponent implements OnInit {
             .reverse()
             .forEach(history => this.chart.dataTable.push([
                 history.date,
-                history[type + '_value'],
+                history[this.chartType + '_value'],
             ]))
         ;
     }
