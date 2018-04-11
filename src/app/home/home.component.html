@@ -1,0 +1,16 @@
+<mat-card *ngIf="top$ | async as top">
+    <mat-card-title>Meilleurs progressions du jour</mat-card-title>
+    <mat-card-content>
+        <mat-list><div *ngFor="let field of fields">
+            <mat-list-item>
+                <h3>{{field}}</h3>
+                <a [routerLink]="['/players/', top[field].player.id_player]">{{top[field].player.username}}</a>
+                <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{top[field].player.country}}.png" width="16px" />
+
+                {{top[field].today.value | number }} (+ {{top[field].delta.value | number}})
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </div></mat-list>
+
+    </mat-card-content>
+</mat-card>

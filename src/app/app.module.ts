@@ -16,6 +16,7 @@ import {
     MatCardModule,
     MatSelectModule,
     MatDividerModule,
+    MatListModule,
 } from '@angular/material';
 
 import { ROUTES } from './app.routes';
@@ -25,6 +26,7 @@ import { PlayerComponent } from './player/player.component';
 import { PlayerListComponent } from './player/list.component';
 import { PlayerService } from './_services/player.service';
 import { GirlHomeComponent } from './girl/home.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +34,7 @@ import { GirlHomeComponent } from './girl/home.component';
         PlayerComponent,
         PlayerListComponent,
         GirlHomeComponent,
+        HomeComponent,
     ],
     imports: [
         BrowserModule,
@@ -51,6 +54,7 @@ import { GirlHomeComponent } from './girl/home.component';
         MatCardModule,
         MatSelectModule,
         MatDividerModule,
+        MatListModule,
     ],
     providers: [
         PlayerService,
