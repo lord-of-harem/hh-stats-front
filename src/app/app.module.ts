@@ -24,12 +24,14 @@ import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
 import { PlayerListComponent } from './player/list.component';
 import { PlayerService } from './_services/player.service';
+import { GirlHomeComponent } from './girl/home.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         PlayerComponent,
         PlayerListComponent,
+        GirlHomeComponent,
     ],
     imports: [
         BrowserModule,
