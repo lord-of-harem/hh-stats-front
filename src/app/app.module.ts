@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +36,7 @@ import { PlayerService } from './_services/player.service';
         RouterModule.forRoot(ROUTES),
         FormsModule,
         ReactiveFormsModule,
-        HttpModule,
+        HttpClientModule,
         Ng2GoogleChartsModule,
         BrowserAnimationsModule,
         MatToolbarModule,
