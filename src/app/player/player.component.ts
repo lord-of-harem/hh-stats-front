@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {PlayerService} from '../_services/player.service';
 import {fields, PlayerModel} from '../_models/player';
 import {Observable} from 'rxjs/Observable';
@@ -22,7 +22,9 @@ export class PlayerComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.player$ = this.playerService.fetchHistory(this.route.snapshot.paramMap.get('playerId'))
+        this.player$ = this.route.paramMap
+            .map((params: ParamMap) => params.get('playerId'))
+            .switchMap(playerId => this.playerService.fetchHistory(playerId))
             .map(player => {
                 this.player = player;
                 this.loadChart();

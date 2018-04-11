@@ -19,4 +19,8 @@ export class PlayerService {
             })
         ;
     }
+
+    searchPlayer(search): Observable<any> {
+        return this.http.get(`${host}/api/players/search/${search}`);
+    }
 }

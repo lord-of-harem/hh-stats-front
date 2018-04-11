@@ -7,19 +7,20 @@
 
     <span class="spacer"></span>
 
-    <mat-form-field>
-    <input matInput type="search" />
-    </mat-form-field>
-
+    <form (submit)="submit()">
+        <mat-form-field floatPlaceholder="never">
+            <input matInput type="search" name="search" [formControl]="searchControl" placeholder="Nom du joueur" [matAutocomplete]="auto"/>
+        </mat-form-field>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let player of players$ | async" [value]="player.id_player" (onSelectionChange)="selectPlayer(player.id_player)">{{player.username}}</mat-option>
+        </mat-autocomplete>
+    </form>
     <button mat-icon-button><mat-icon>search</mat-icon></button>
-    <!--<mat-form-field>
-        <input matInput type="search" [formControl]="itemCtrl" />
-    </mat-form-field>-->
-    <mat-autocomplete #auto="matAutocomplete">
 
-    </mat-autocomplete>
+
+
 </mat-toolbar>
 
-<div>
+<div id="app">
     <router-outlet></router-outlet>
 </div>
