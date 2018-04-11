@@ -22,11 +22,13 @@ export class PlayerComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.player$ = this.playerService.fetchHistory(this.route.snapshot.paramMap.get('playerId'));
-        this.player$.subscribe(player => {
-            this.player = player;
-            this.loadChart();
-        });
+        this.player$ = this.playerService.fetchHistory(this.route.snapshot.paramMap.get('playerId'))
+            .map(player => {
+                this.player = player;
+                this.loadChart();
+                return this.player;
+            })
+        ;
     }
 
     private loadChart() {

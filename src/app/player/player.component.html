@@ -1,5 +1,7 @@
 <div *ngIf="player$ | async as p">
-    <mat-card>{{p.player.username}} <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{p.player.country}}.png" width="16px" /></mat-card>
+    <mat-card>
+        {{p.player.username}} <img src="https://content.hentaiheroes.com/pictures/misc/flags/{{p.player.country}}.png" width="16px" />
+    </mat-card>
 
     <mat-divider></mat-divider>
 
