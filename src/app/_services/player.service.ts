@@ -4,8 +4,9 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {PlayerModel} from '../_models/player';
 import {TopModel} from '../_models/top';
+import {environment} from '../../environments/environment';
 
-const host = `http://localhost:3000`;
+const host = environment.api;
 
 @Injectable()
 export class PlayerService {
@@ -13,7 +14,7 @@ export class PlayerService {
 
     fetchHistory(playerId: string): Observable<PlayerModel> {
         return this.http
-            .get<PlayerModel>(`${host}/api/players/${playerId}`)
+            .get<PlayerModel>(`${host}players/${playerId}`)
             .map(player => {
                 player.history.forEach(history => history.date = new Date(history.date));
                 return player;
@@ -22,10 +23,10 @@ export class PlayerService {
     }
 
     searchPlayer(search): Observable<any> {
-        return this.http.get(`${host}/api/players/search/${search}`);
+        return this.http.get(`${host}players/search/${search}`);
     }
 
     fetchTopDay(): Observable<TopModel> {
-        return this.http.get(`${host}/api/top/day`);
+        return this.http.get<TopModel>(`${host}top/day`);
     }
 }
