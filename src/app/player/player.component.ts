@@ -10,11 +10,11 @@ import {Observable} from 'rxjs/Observable';
     styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-    private player$: Observable<PlayerModel>;
-    private player: PlayerModel;
-    private chart;
-    private chartType;
-    private fields: Array<string>;
+    player$: Observable<PlayerModel>;
+    player: PlayerModel;
+    chart;
+    chartType;
+    fields: Array<string>;
 
     constructor(private route: ActivatedRoute, private playerService: PlayerService) {
         this.fields = fields;

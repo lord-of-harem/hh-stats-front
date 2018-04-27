@@ -10,8 +10,8 @@ import { Observable } from 'rxjs/Observable';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    private top$: Observable<TopModel>;
-    private fields: Array<string>;
+    top$: Observable<TopModel>;
+    fields: Array<string>;
 
     constructor(private playerService: PlayerService) {
         this.fields = fields;

@@ -14,8 +14,8 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    private searchControl = new FormControl();
-    private players$: Observable<any>;
+    searchControl = new FormControl();
+    players$: Observable<any>;
 
     constructor(private playerService: PlayerService, private router: Router) {}
 
